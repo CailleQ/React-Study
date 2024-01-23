@@ -29,14 +29,9 @@ function getArticleTem() {
 // }
 
 //事件参数 e
-// const handleClick = (e) => {
-//   console.log("点击事件产生了",e);
-// }
-
-//传递自定义参数
-const handleClick = (name) => {
-  console.log("点击事件产生了",name);
-}
+ const handleClick = (e) => {
+   console.log("点击事件产生了",e);
+ }
 
 /*  ↑ 定义的变量以及函数  */
 
@@ -70,9 +65,9 @@ function App() {
       {/*复杂条件渲染, 调用函数渲染不同模板*/}
       {getArticleTem()}
       
+
       {/*按钮事件绑定*/}
       <button onClick={()=>handleClick('jack')}>click me </button>
-       
 
     </div>
   );
