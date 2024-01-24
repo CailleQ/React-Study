@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-
+import  './index.css';
 
 //1.定义组件
 function Button(){
-  //业务逻辑组件逻辑
+  //业务逻辑组件逻辑  事件处理函数
   return <button>Click me </button>
 }
 
@@ -13,7 +13,11 @@ function Button(){
 
 //useState实现一个计数器按钮
 
-
+//
+const style = { 
+  color :'red',
+  fontSize : '50px'
+}
 
 
 function App() {
@@ -28,11 +32,30 @@ function App() {
 
   }
 
-  //调用useState函数  添加一个状态变量
-  useState() 
+  //1.调用useState函数  添加一个状态变量
+  //count 就是状态变量 ， setCount 就是修改状态变量的函数
+  const [count,setCount] = useState(0) 
 
 
+  //2.点击事件回调
+  const handleClickCount = () => {
+    //作用1 ：用传入的值修改状态变量
+    //    2.重新渲染组件
+    setCount(count+1)
+  }
 
+  //3.修改复杂状态变量
+  const handleClickObj = () =>{
+    setObj({
+      ...obj,
+      age:obj.age+1
+    }
+    )
+  }
+
+
+  //修改复杂状态变量，或者说是对象
+  const [obj,setObj] = useState({name:'tom',age:18})
 
   return (
     <div className="App">
@@ -42,9 +65,21 @@ function App() {
      {/* 自闭和 */}
      <Button />
      <Button></Button>
-     <button> 0 </button>
+     
+     {/* 3. 传递自定义参数 */}
+     <button onClick={handleClickCount}>{count}</button>
+      
+     {/* 4. 修改复杂状态变量 */}
+     <button onClick={handleClickObj}>修改复杂状态变量{'  '+obj.name+'有'+obj.age+'岁'}</button>
+
+    {/* 5. 行内样式控制 */}
+    <span style={style}>this is a span</span>
+
+    {/* 6. 通过class类名控制 */}
+    <span className="foo">this is class foo</span>
 
     </div>
+    
   );
 }
 
